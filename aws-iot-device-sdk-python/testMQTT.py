@@ -2,10 +2,21 @@ import os
 import os.path
 import time
 import json
+import numpy as np
 
 ROOTDIR='../keys'
 THING_NAME = 'testMQTT'
 TOPIC_NAME = 'device/22/data'
+
+def create_msg():
+    message = {"temperature" : int(np.random.randint(1, 10, 1)),
+                "humidity": int(np.random.randint(1, 100, 1)),
+                "barometer": int(np.random.randint(1, 1000, 1)),
+                "wind": {
+                    "velocity": int(np.random.randint(1, 30, 1)),
+                    "bearing": int(np.random.randint(1, 300, 1))
+               }}
+    return message
 
 class IotMqttClient:
 
@@ -55,9 +66,10 @@ def main():
        print(count)
        count += 1
        time.sleep(1)
-       send_data = {'key':count}
+       mes = create_msg()
+       send_data = mes
        json_data = json.dumps(send_data)
-       iot_mqtt_client.publish(os.path.join(THING_NAME, TOPIC_NAME), json_data)
+       iot_mqtt_client.publish(TOPIC_NAME, json_data)
 
 if __name__ == '__main__':
     main()
