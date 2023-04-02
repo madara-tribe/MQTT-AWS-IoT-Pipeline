@@ -3,16 +3,17 @@ import os.path
 import time
 import json
 import numpy as np
+import datetime
+
 
 ROOTDIR='../keys'
 THING_NAME = 'testMQTT'
 TOPIC_NAME = 'device/22/data'
 
-def create_msg(count, s_count):
+def create_msg(count):
     message = {}
-    #message['wind']={}
-    message['sample_time'] = count
-    message['device_id'] = s_count
+    message['sample_time'] = str(datetime.datetime.now())
+    message['device_id'] = count
     message['temperature'] = int(np.random.randint(1, 10, 1))
     message['humidity'] = int(np.random.randint(1, 10, 1))
     message['barometer'] = int(np.random.randint(1, 1000, 1))
@@ -60,17 +61,16 @@ class IotMqttClient:
         self.__my_iot_mqtt_client.publishAsync(IOT_TOPIC, str(unpacked_data), 1, ackCallback=None)
 
 
-def main(num_keys):
+def main():
     iot_mqtt_client = IotMqttClient()
-    for count in range(num_keys):
-        for s_count in range(num_keys):
-            print(count, s_count)
-            time.sleep(1)
-            mes = create_msg(count, s_count)
-            messageJson = json.dumps(mes)
-            iot_mqtt_client.publish(TOPIC_NAME, messageJson)
+    count = 0
+    while True:
+        print(count)
+        time.sleep(1)
+        mes = create_msg(count)
+        messageJson = json.dumps(mes)
+        iot_mqtt_client.publish(TOPIC_NAME, messageJson)
+        count += 1
 
 if __name__ == '__main__':
-    num_keys = 100
-    print("total input is ", num_keys*num_keys)
-    main(num_keys)
+    main()

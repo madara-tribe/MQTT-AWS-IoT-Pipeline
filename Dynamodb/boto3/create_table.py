@@ -10,7 +10,7 @@ def create_dax_table():
             {'AttributeName': SOTE_KEY, 'KeyType': 'RANGE'}
         ],
         'AttributeDefinitions': [
-            {'AttributeName': PARTITION_KEY, 'AttributeType': 'N'},
+            {'AttributeName': PARTITION_KEY, 'AttributeType': 'S'},
             {'AttributeName': SOTE_KEY, 'AttributeType': 'N'}
         ],
         'ProvisionedThroughput': {
