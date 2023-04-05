@@ -1,19 +1,19 @@
-Resource:IotCore
+Resource: IotCore
 Thing:
-   name:TestMQTT
-   port:8883
-   certification:"auto create"
+   name: TestMQTT
+   port: 8883
+   certification: "auto create"
    keys:
-      device_certification:AmazonRootCA1.pem
-      public_key:public.pem.key
-      private_key:private.pem.key
-      RootCA_certificate_RSA2048bit_key:AmazonRootCA1.pem
+      device_certification: AmazonRootCA1.pem
+      public_key: public.pem.key
+      private_key: private.pem.key
+      RootCA_certificate_RSA2048bit_key: AmazonRootCA1.pem
 policy:
-   name:TestMQTT
-   type:json
-   file:policy.json
+   name: TestMQTT
+   type: json
+   file: policy.json
 payload:
-   file:payload.json
+   file: payload.json
 actions: DynamoDBv2, Lambda
 
     
