@@ -1,16 +1,18 @@
 Resource: Lambda
-function:
-    name: AWSIoTcore2Lambda
+meta:
+  kind: function
+    name: "AWSIoTcore2Lambda"
     runtime: "python3.7"
     script: function.py
-tigger:
+  kind: tigger
     type: IotCore
     name: "to_lambda"
 
-
-
 Resource: IotCore
-action: Lambda
+meta:
+  action: 
+    kind: Lambda
     name: "to_lambda"
-    SQL_statement: statement.sql
-    version: $LATEST
+    sql:
+      statement: statement.sql
+      version: $LATEST
