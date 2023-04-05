@@ -7,7 +7,7 @@ import datetime
 
 
 ROOTDIR='../keys'
-THING_NAME = 'testMQTT'
+THING_NAME = 'TestMQTT'
 TOPIC_NAME = 'device/22/data'
 
 def create_msg(count):
