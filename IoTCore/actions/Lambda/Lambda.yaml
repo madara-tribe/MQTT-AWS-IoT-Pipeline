@@ -10,9 +10,10 @@ meta:
 
 Resource: IotCore
 meta:
-  action: 
-    kind: Lambda
-    name: "to_lambda"
-    sql:
-      statement: statement.sql
-      version: $LATEST
+  kind:
+    action:
+      type: Lambda
+      name: "to_lambda"
+      sql:
+        statement: statement.sql
+        version: $LATEST
