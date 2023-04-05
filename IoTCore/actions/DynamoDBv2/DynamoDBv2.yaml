@@ -1,29 +1,32 @@
 Resource: IotCore
 meta:
-  kind: tigger
-    type: DynamoDBv2
-    name: "wx_data_ddb"
-    sql:
-      statement: statement.sql
-    DynamoDB_table:
-      name: "wx_data"
-    IAM_role: 
-      name: "wx_ddb_role"
+  kind: 
+    action: 
+      type: DynamoDBv2
+      name: "wx_data_ddb"
+      sql:
+        statement: statement.sql
+      DynamoDB_table:
+        name: "wx_data"
+      IAM_role: 
+        name: "wx_ddb_role"
   kind: MQTT
     message_payload: message_payload.json
     topic:
       name: "device/22/data"
       filter: "device/+/data"
-            
+           
+
 Resource: DynamoDB
-kind:
-  region: 'ap-northeast-1'
-  table:
-    name: "wx_data"
-    partition_key:
+meta:
+  kind:
+    region: 'ap-northeast-1'
+    table:
+      name: "wx_data"
+      partition_key:
         name: 'sample_time' 
         AttributeType: 'S'
-    sote_key:
+      sote_key:
         name: 'device_id'
         AttributeType: 'N'
 
