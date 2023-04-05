@@ -1,6 +1,6 @@
-Resource: IotCore
+Resource:IotCore
 Thing:
-   name: TestMQTT
+   name: "TestMQTT"
    port: 8883
    certification: "auto create"
    keys:
@@ -9,7 +9,7 @@ Thing:
       private_key: private.pem.key
       RootCA_certificate_RSA2048bit_key: AmazonRootCA1.pem
 policy:
-   name: TestMQTT
+   name: "TestMQTT"
    type: json
    file: policy.json
 payload:
