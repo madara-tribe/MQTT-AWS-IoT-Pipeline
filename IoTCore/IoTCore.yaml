@@ -14,6 +14,8 @@ meta:
     format: json
     file: policy.json
     payload: payload.json
-  actions: DynamoDBv2, Lambda
+  kind:
+    action: 
+      type: DynamoDBv2, Lambda
 
     
