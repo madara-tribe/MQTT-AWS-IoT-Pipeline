@@ -1,0 +1,21 @@
+AWS:
+    RESOURCE: IotCore
+        TRIGGER_ACTIONS: 
+            TYPE: DynamoDBv2
+            NAME: "wx_data_ddb"
+            SQL_STATEMENT: statement.sql
+            TABLE_NAME: "wx_data"
+            IAM_ROLE: "wx_ddb_role"
+    RESOURCE: DynamoDB
+        TABLE:
+            NAME: "wx_data"
+            PARTITION_KEY: 
+                NAME: 'sample_time' 
+                ATTRIBUTE_TYPES: 'S'
+            SOTE_KEY:
+                NAME: 'device_id'
+                ATTRIBUTE_TYPES: 'N'
+        REGION: 'ap-northeast-1'
+        
+        
+    

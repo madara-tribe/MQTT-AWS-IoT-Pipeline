@@ -1,0 +1,15 @@
+AWS:
+    RESOURCE: Lambda
+        FUNCTION:
+            NAME: "AWSIoTcore2Lambda"
+            RUNTIME: "python3.7"
+            SCRIPT_FILE: function.py
+        TRIGGER:
+            TYPE: IotCore
+            NAME: "to_lambda"
+    RESOURCE: IotCore
+        ACTION:
+            TYPE: Lambda
+            NAME: "to_lambda"
+            SQL_STATEMENT: statement.sql
+            VESION: $LATEST

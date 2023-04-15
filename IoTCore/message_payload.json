@@ -1,0 +1,12 @@
+# PARTITION_KEY='sample_time'
+# SOTE_KEY='device_id'
+{
+  "sample_time" : 12,
+  "device_id" : 20,
+  "temperature": 28,
+  "humidity": 80,
+  "barometer": 1013,
+  "wind_velocity": 22,
+  "wind_bearing": 255
+}
+

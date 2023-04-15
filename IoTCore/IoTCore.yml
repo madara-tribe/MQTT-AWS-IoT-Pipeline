@@ -1,0 +1,25 @@
+AWS:
+   RESOURCE: IotCore
+      THING:
+         NAME: "TestMQTT"
+         PORT: 8883
+         CERTIFICATION: "auto create"
+      KEYS:
+         DEVICE_CRT: "certificate.pem.crt"
+         PUBLIC_KEY: "public.pem.key"
+         PRIVATE_KEY: "private.pem.key"
+         ROOTCA_CRT_RSA2048BIT_KEY: "AmazonRootCA1.pem"
+      POLICY:
+         NAME: "TestMQTT"
+         TYPE: json
+         POLICY_JSON_PATH: policy.json
+      PAYLOAD:
+         FILE: payload.json
+      MQTT:
+            MESSAGE_PAYLOAD: "message_payload.json"
+            TOPIC:
+                NAME: "device/22/data"
+                FILTER: "device/+/data"
+      TRIGGER_ACTIONS: ["DynamoDBv2", "Lambda"]
+
+    
