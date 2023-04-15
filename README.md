@@ -2,7 +2,7 @@
 
 This is data pipeline with AWS from Jetson Sensor data gathering to local pC analysis.
 
-This sample pipeline focus on just analyze(on local) Iot sensor data that gather from remote.
+This sample pipeline is focused on just analyze(on local) Iot sensor data that gather from remote.
 
 ## Oveview diagram
 
