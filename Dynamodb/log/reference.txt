@@ -1,1 +1,0 @@
-https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DAX.client.run-application-python.html
