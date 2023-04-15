@@ -1,0 +1,65 @@
+MODEL:
+    NUM_CLASS: 2
+    TYPE: efficientnet_b0
+    NORMALIZE:
+        MEAN: [0.485, 0.456, 0.406]
+        STD: [0.229, 0.224, 0.225]
+TRAIN:
+    NUM_EPOCH: 20
+    NUM_GPU: 1
+    IS_SAVE: True
+    LOG_INTERVAL: 100
+    SAVE_INTERVAL: 5
+    OPTIMIZER:
+        NAME: SGD
+        PARAM:
+            LR: 0.01
+            MOMENTUM: 0.9
+    SCHEDULER:
+        NAME: CosineAnnealingLR
+        UPDATE_INTERVAL: iteration
+    DATASET:
+        RANDOM_HORIZONTAL_FLIP:
+            P: 0.5
+        RANDOM_COLOR_JITTER:
+        RANDOM_AFFINE_TRANSFORM:
+            SIZE: [224, 224]
+            MAX_ANGLE: 30
+            MIN_SCALE: 0.75
+            MAX_SCALE: 1.0
+            MAX_SHIFT: 22
+            BORDER_VALUE: [0, 0, 0]
+    DATALOADER:
+        BATCH_SIZE: 32
+        SHUFFLE: True
+        NUM_WORKERS: 8
+        PIN_MEMORY: True
+    VALIDATION:
+        DATASET:
+            CONTAIN:
+                SIZE: [224, 224]
+        DATALOADER:
+            BATCH_SIZE: 128
+            NUM_WORKERS: 8
+            PIN_MEMORY: True
+        LOSS:
+            NAME: loss
+            VAL_INTERVAL: 1
+        CLASSIFICATION:
+            PARAMS:
+                METRICS: accuracy
+                TOPK: 1
+            VAL_INTERVAL: 1
+        MONITOR:  # this argument is omittable if you do not want to monitor a metric
+            MONITORED_KEY: classification.accuracy@top1
+            GREATER_IS_BETTER: True
+        EARLY_STOP:  # this argument is omittable if you do not want to monitor a metric
+            PATIENCE: 10
+TEST:
+    DATASET:
+        CONTAIN:
+            SIZE: [224, 224]
+    DATALOADER:
+        BATCH_SIZE: 128
+        NUM_WORKERS: 8
+        PIN_MEMORY: True
